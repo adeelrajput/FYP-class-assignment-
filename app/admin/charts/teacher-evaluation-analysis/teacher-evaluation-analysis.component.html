@@ -1,0 +1,17 @@
+<div class="well">
+    <h2 style="text-align: center">Teacher Evaluation</h2>
+    <p style="text-align: center">This is the feedback of students about thier Teacher</p>
+  </div>
+  
+  
+  <div *ngFor="let data of currentQuestionsValue">
+    <div *ngFor="let d of data.items; let i = index">
+      <div class="form-control">
+        {{i+1}} {{d.question}}
+        <div width="40%" *ngIf="show" >
+          <canvas baseChart [data]="pieChartData[i]" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,12 @@
+.no-border {
+    border: 0;
+    box-shadow: none; /* You may want to include this as bootstrap applies these styles too */
+}
+
+.bgcolor{
+    background: #e9ecef
+}
+
+input.ng-invalid{
+    border: 1px solid red
+}

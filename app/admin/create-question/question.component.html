@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div>
+      <form [formGroup]="questionnaire" (ngSubmit)="onSubmit()">
+        <div>
+          <label>Select Form Type...</label>
+          <select formGroupName="formType" class="custom-select" (change)=formChange($event.target.value)>
+            <option selected>Choice...</option>
+            <option value="Student Course Review">Student Course Review</option>
+            <option value="Teacher Evalutaion">Teacher Evalutaion</option>
+          </select>
+        </div>
+        <br>
+        <div *ngIf="show">
+          <div class="form-control" formArrayName="items" *ngFor=" let question of questionnaire.get('items').controls; let i = index">
+            <div class="form-group" [formGroupName]="i">
+              <div class="form-group">
+                <label for="Q no">S/No:</label>
+                <input type="number" class="form-control" formControlName="sno" value="{{i+1}}">
+              </div>
+
+              <div class="form-group">
+                <label for="question">Question</label>
+                <input type="text" class="form-control" formControlName="question">
+              </div>
+
+              <div class="form-group" formArrayName="options">
+                <label class="col-1">Options:</label>
+                <input type="text" formControlName="option1" class="col-2"> &ensp;
+                <input type="text" formControlName="option2" class="col-2"> &ensp;
+                <input type="text" formControlName="option3" class="col-2"> &ensp;
+                <input type="text" formControlName="option4" class="col-2"> &ensp;
+                <input type="text" formControlName="option5" class="col-2"> &ensp;
+              </div>
+            </div>
+          </div>
+          <br>
+          <button class="btn btn-success" type="button" (click)="addItem()">Add Question</button>
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>

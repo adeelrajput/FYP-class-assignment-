@@ -1,0 +1,55 @@
+<div class="container">
+  <form #f="ngForm">
+    <div class="row" *ngIf="basicinforFormHide">
+      <div class="col-12  div">
+
+        <label>Select Form:</label>
+        <select required class="custom-select mb-2 mr-sm-2 mb-sm-0" name="selectFrom" (change)="onChangeFormType($event.target.value)">
+          <option value="" selected>Choice...</option>
+          <!-- <option value="Teacher Feedback">Teacher Feedback</option> -->
+          <option value="Teacher Evalutaion">Teacher Evalutaion</option>
+          <option value="Student Course Review">Student Course Review</option>
+        </select>
+
+
+        <label>Select Batch:</label>
+        <select [disabled]="enableBatcSelection" #batchSlected class=" custom-select mb-2 mr-sm-2 mb-sm-0 ng-invaild" name="batchs"
+          (change)="onchangebatch($event.target.value)" required>
+          <option value="" selected>Choice...</option>
+          <option [value]="b" *ngFor="let b of batches"> {{ b }} </option>
+        </select>
+
+        <br>
+
+        <label>Select Semester:</label>
+        <select [disabled]="enableSemesterSelection" class=" custom-select mb-2 mr-sm-2 mb-sm-0" (change)="onChangeSemester($event.target.value)"
+          name="semesters">
+          <option value="" selected>Choice...</option>
+          <option [value]="sem" *ngFor="let sem of semesters"> {{ sem }} </option>
+        </select>
+
+        <br>
+        <br>
+        <!-- <label>Select Subject:</label>
+      <select required class=" custom-select mb-2 mr-sm-2 mb-sm-0" name="subjects" (change)="onChangeSubject($event.target.value)">
+        <option value="" selected>Choice...</option>
+        <option [value]="sub" *ngFor=" let sub of subjects"> {{ sub }} </option>
+      </select>
+    -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2 jumbotron" style="margin-right: 10px" (click)=attempt(sub) *ngFor=" let sub of subjects">
+        <strong class="text-center">{{ sub }}</strong>
+        <p>Select Your Subject </p>
+      </div>
+    </div>
+  </form>
+
+  <div class="row">
+    <app-course-review-form *ngIf="formShow=== 'Student Course Review'" [basicInfoData]="basicInfoData"></app-course-review-form>
+    <app-teacher-evaluation *ngIf="formShow==='Teacher Evalutaion'" [basicInfoData]="basicInfoData"></app-teacher-evaluation>
+  </div>
+
+  <button class="btn btn-primary right" *ngIf="btnShow" (click)="showBasicInfoFrom()">Back</button>
+</div>

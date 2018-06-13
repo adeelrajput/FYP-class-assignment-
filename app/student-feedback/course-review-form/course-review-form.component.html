@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="jumbotron">
+      <div class="form-control">
+        <h2 class="text-center"> {{basicInfoData[0]}}</h2>
+        <div class="form-control jumbotron">
+          <div>
+            <label> Batch:</label>
+            <input type="text" class="form-control border-0" name="batch" value="{{basicInfoData[1]}}">
+            <label> Semester:</label>
+            <input type="text" class="form-control border-0" name="semester" value="{{basicInfoData[2]}}">
+            <label> Subject:</label>
+            <input type="text" class="form-control border-0" name="subject" value="{{basicInfoData[3]}}">
+            <!-- ngModel="{{basicInfoData[3]}}" -->
+          </div>
+        </div>
+
+        <div *ngFor="let data of currentQuestionsValue">
+          <div *ngFor="let d of data.items; let i = index ">
+            <div class="form-control  bgcolor">
+              {{i+1}} {{d.question}}
+            </div>
+            <div>
+              <label *ngFor="let key of objectKeys(d.options)">
+                <input type="radio" name="{{i}}" [value]="d.options[key]" ngModel required>
+                <span>{{ d.options[key] }} &ensp;</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+      <strong *ngIf="Submited"> Your For Successfully Submited! </strong>
+    </form>
+
+  </div>
+</div>

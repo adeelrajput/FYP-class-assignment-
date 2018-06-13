@@ -1,0 +1,36 @@
+.img{
+    width: 40px;
+    height: 40px;
+    float: left;
+}
+
+li:hover{
+    color: #666
+}
+
+.no-underline{
+    border-bottom: 0px
+}
+
+a.dropdown-item:hover{
+    background: #563d7c;
+}
+
+#dropdown01{
+    background: #563d7c;
+    
+}
+
+#dropdown01:hover{
+    background: #563d7c;
+    color: white;
+}
+
+nav{
+    font-size: 1rem;
+}
+
+a.navbar-brand{
+    font-size: 1.25rem;
+    margin-right: 30px;
+}

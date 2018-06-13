@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-light costum-nav navbar-collaspe  " style="background-color: #563d7c;">
+  <ul class="nav navbar-nav nav-tabs no-underline">
+    <li>
+      <a class="navbar-brand text-white ">QEC</a>
+    </li>
+    <div style="display: -webkit-box;">
+      <li routerLinkActive="active">
+        <a routerLink="/" class="nav-item nav-link text-white">Home</a>
+      </li>
+      <li routerLinkActive="active" *ngIf="role=='admin'">
+        <a routerLink="admin/create-question" class="nav-item nav-link text-white ">Create Questionnir</a>
+      </li>
+      <li routerLinkActive="active" *ngIf="role=='admin'">
+        <a routerLink="/admin/analysis" class="nav-item nav-link text-white ">Analysis</a>
+      </li>
+    </div>
+    <div>
+      <li routerLinkActive="active" *ngIf="role=='student'">
+        <a routerLink="student-feedback" class="nav-item nav-link text-white ">Student</a>
+      </li>
+    </div>
+      <li class="nav-item dropdown" style="cursor: pointer;" ngbDropdown>
+      <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>
+        {{userName}}</a>
+      <div class="dropdown-menu" aria-labelledby="dropdown01" ngbDropdownMenu>
+        <a class="dropdown-item" routerLink="login" *ngIf="role == ''">Sign in</a>
+        <a class="dropdown-item" routerLink="sign-up" *ngIf="role == ''">Register</a>
+        <a class="dropdown-item" (click)="logout()" *ngIf="role != ''">Logout</a>
+      </div>
+    </li>
+  </ul>
+  <!-- <img class="img" src="../../assets/logo.png" alt="Uni Logo"> -->
+
+  <ul class="nav navbar-nav nav-tabs no-underline navbar-right">
+
+  </ul>
+
+</nav>
